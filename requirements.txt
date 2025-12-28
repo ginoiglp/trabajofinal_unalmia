@@ -1,0 +1,8 @@
+pandas
+numpy
+scikit-learn
+seaborn
+matplotlib
+os
+pickle
+pip install -r requirements.txt

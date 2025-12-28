@@ -5,7 +5,7 @@ import pandas as pd
 import pickle
 from tensorflow.keras.models import load_model
 
-# ---- 1. Cargar modelo (solo para predecir, sin recompilar) ----
+# ---- 1. Cargar modelo ----
 model = load_model("modelo_calidad_agua.h5", compile=False)
 
 # ---- 2. Cargar scaler + nombres de variables ----
@@ -26,18 +26,17 @@ cols_drop = ["station", "year", "season"]
 df = df.drop(columns=[c for c in cols_drop if c in df.columns])
 
 # también quitamos la variable objetivo (por ejemplo "OD")
-target_col = "OD"  # cámbiala si tu y fue otra
+target_col = "OD" 
 df_features = df.drop(columns=[target_col])
 
-# nos aseguramos de usar SOLO las columnas que vio el modelo, en el mismo orden
 df_features = df_features[feature_names]
 
-# ---- 4. Tomar una fila de ejemplo ----
-fila_df = df_features.iloc[[0]]  # doble corchete para que siga siendo DataFrame
+# ---- Tomar una fila de ejemplo ----
+fila_df = df_features.iloc[[0]]
 print("\nFila usada para ejemplo (features):")
 print(fila_df)
 
-# ---- 5. Escalar y predecir ----
+# ---- Escalar y predecir ----
 X = scaler.transform(fila_df)
 pred = model.predict(X)
 

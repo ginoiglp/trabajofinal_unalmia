@@ -28,11 +28,15 @@ Desarrollar un pipeline completo que pueda:
 
 ## 3. Estructura del repositorio
 
-data/        # base de monitoreo sintética (5000 registros)  
-notebooks/   # 01_EDA.ipynb y 02_modelo_mlp.ipynb  
-src/         # scripts de funciones reutilizables  
-models/      # modelo final guardado (.h5)  
-README.md    # este archivo  
+PROYECTO_FINAL/
+├── imgs/                       # imagen del mapa del área de estudio
+├── 01_EDA.ipynb                # análisis exploratorio
+├── 02_modelo_mlp.ipynb         # entrenamiento del modelo
+├── modelo_calidad_agua.h5      # modelo final guardado
+├── scaler_features.pkl         # scaler usado para procesar variables
+├── predictor.py                # script para ejecutar una predicción en terminal
+├── BBDD_FINAL_sintetica.csv    # dataset sintético (base de monitoreo)
+└── README.md
 
 ---
 
@@ -61,12 +65,13 @@ El modelo se implementa con TensorFlow/Keras con la siguiente arquitectura:
 ---
 
 ### Configuración de entrenamiento
-
+- Modelo: Red MLP (Dense → Dense → Dense 1)
 - Optimizador: Adam (LR = 0.001)  
 - Función de pérdida: MSE  
-- Métrica: MAE  
+- Métrica: MSE / MAE  
 - Validación: 80% / 20%  
 - EarlyStopping para evitar sobreentrenamiento  
+- Dataset procesado eliminando columnas no numéricas (station, year, season)
 
 
 
@@ -74,7 +79,7 @@ El modelo se implementa con TensorFlow/Keras con la siguiente arquitectura:
 
 ### Optimización y resultados
 
-Se ajustaron neuronas, tamaño de batch y número de épocas.  
+Se ajustaron redes neuronales para el tamaño de batch y número de épocas.  
 El modelo se detuvo automáticamente cuando no mejoraba, evitando overfitting.
 
 Resultados estimados:
@@ -92,11 +97,19 @@ Resultados estimados:
 
 ---
 
-### Recepción de nueva data para predicción
+### Como predecir
 
-    nueva_data = pd.read_csv("data/campaña_2025.csv")
-    nueva_proc = transformar(nueva_data)
-    pred = model.predict(nueva_proc)
+Desde la terminal (con el ambiente virtual activado):
+
+python predictor.py
+
+Ejemplo:
+
+Variables usadas por el modelo:
+['DBO', 'DQO', 'TDS', 'arsenico', ..., 'zinc']
+
+Predicción para esa fila:
+7.639373
 
 
 ---
@@ -133,6 +146,16 @@ Esta base es artificial y fue utilizada únicamente para exploración y experime
 
 ---
 
+## Instalación del entorno
+
+Se recomienda crear un entorno virtual: unalm_ia
+
+Instalar dependencias: 
+pip install -r requirements.txt
+
+
+---
+
 ## 🌍 Contexto del área de estudio
 
 El área de estudio considera **4 estaciones de monitoreo a lo largo del río Chili**: CHILI-1, CHILI-2, CHILI-3 y CHILI-4, ubicadas entre la salida de Arequipa, valle de Socabaya y zona de Huayco.  
@@ -149,7 +172,7 @@ Se diferenció estacionalmente la información entre:
 
 Este contexto permite darle coherencia al dataset sintético y a su uso dentro de un flujo de modelamiento predictivo ambiental.
 
-![Mapa del área de estudio – Río Chili](imgs/mapa_chili.png)
+<p align="center"> <img src="imgs/mapa_chili.png" width="600"> </p>
 
 
 
