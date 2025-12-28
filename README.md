@@ -172,7 +172,7 @@ Se diferenció estacionalmente la información entre:
 
 Este contexto permite darle coherencia al dataset sintético y a su uso dentro de un flujo de modelamiento predictivo ambiental.
 
-<p align="center"> <img src="imgs/mapa_chili.png" width="600"> </p>
+<p align="center"> <img src="imgs/mapa_chili.jpg" width="600"> </p>
 
 
 
