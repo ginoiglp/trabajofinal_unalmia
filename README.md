@@ -137,7 +137,7 @@ Este proyecto demuestra:
 Este proyecto no utiliza datos de monitoreo reales. La base empleada es **sintética**, generada con fines académicos para probar técnicas de machine learning y deep learning.  
 Las mediciones no representan condiciones reales del río Chili.
 
-**Metodología de generación de la data** :contentReference[oaicite:0]{index=0}
+**Metodología de generación de la data** :
 - Se tomaron filas reales de la base original como referencia y se seleccionaron mediante muestreo con reemplazo.
 - Se rellenaron valores nulos utilizando la media para cada variable y así garantizar cálculos estadísticos consistentes.
 - Se calculó la desviación estándar por variable y se añadió un ruido gaussiano suave (±10% σ) para crear variación.
