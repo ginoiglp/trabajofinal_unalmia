@@ -101,6 +101,8 @@ Resultados estimados:
 
 ### Como predecir
 
+```
+
 Desde la terminal (con el ambiente virtual activado):
 
 python predictor.py
@@ -113,6 +115,7 @@ Variables usadas por el modelo:
 Predicción para esa fila:
 7.639373
 
+```
 
 ---
 
