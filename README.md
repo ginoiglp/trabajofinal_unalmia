@@ -28,6 +28,8 @@ Desarrollar un pipeline completo que pueda:
 
 ## 3. Estructura del repositorio
 
+```
+
 PROYECTO_FINAL/
 ├── imgs/                       # imagen del mapa del área de estudio
 ├── 01_EDA.ipynb                # análisis exploratorio
@@ -37,7 +39,7 @@ PROYECTO_FINAL/
 ├── predictor.py                # script para ejecutar una predicción en terminal
 ├── BBDD_FINAL_sintetica.csv    # dataset sintético (base de monitoreo)
 └── README.md
-
+```
 ---
 
 ## 4. Análisis exploratorio – EDA
